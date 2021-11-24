@@ -1,0 +1,24 @@
+{%if request.user.is_authenticated %}
+<p>{{request.user}}</p>
+<a href="{% url 'logout' %">Log Out</a>
+{% else %}
+<a href="{% url 'login'%}">Lgin</a>
+{% endif%}
+<hr>
+
+<a href="{% url 'task-craet' %}">Add item</a>
+
+<h1>Hello simo how are you</h1>
+
+{% for item in list_task  %}
+<table>
+    <tr>
+        <h1>{{item.title}}</h1>
+        <a href="{% url 'task' item.id %}">Vewo</a>
+        <div></div>
+        <a href="{% url 'task-update' item.id%}">edit item</a>
+        <div></div>
+        <a href="{% url 'task-delete' item.id%}">Delete item</a>
+    </tr>
+</table>
+{% endfor %}
